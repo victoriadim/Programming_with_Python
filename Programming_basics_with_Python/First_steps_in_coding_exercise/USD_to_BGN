@@ -1,0 +1,4 @@
+usd = float(input())
+bgn_to_usd = 1.79549
+bgn = usd * 1.79549 
+print (bgn)
