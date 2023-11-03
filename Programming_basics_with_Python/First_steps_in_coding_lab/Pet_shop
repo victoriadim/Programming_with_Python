@@ -1,0 +1,5 @@
+food_for_dogs = int(input())
+food_for_cats = int(input())
+  
+total_food = food_for_dogs * 2.5 + food_for_cats * 4
+print(f"{total_food} lv.")
