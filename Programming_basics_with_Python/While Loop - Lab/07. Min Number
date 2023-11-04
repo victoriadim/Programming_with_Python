@@ -1,0 +1,19 @@
+smallest = float('inf')
+while True:
+    try:
+        user_input = input()
+
+        if user_input.lower() == 'stop':
+            break
+            
+        num = int(user_input)
+        if num < smallest:
+            smallest = num
+
+    except ValueError:
+        print("Invalid input.")
+
+if smallest != float('inf'):
+    print(smallest)
+else:
+    print("No valid numbers were entered.")
