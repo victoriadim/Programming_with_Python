@@ -1,0 +1,9 @@
+hall_rent = int(input())
+
+oscars_price = hall_rent - (hall_rent * 0.3)
+catering_price = oscars_price - (oscars_price * 0.15)
+music = catering_price / 2
+
+total = hall_rent + oscars_price + catering_price + music
+
+print(f'{total:.2f}')
