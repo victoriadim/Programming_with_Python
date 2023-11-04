@@ -1,0 +1,20 @@
+largest = float('-inf')
+
+while True:
+    try:
+        user_input = input()
+
+        if user_input.lower() == 'stop':
+            break
+
+        num = int(user_input)
+        if num > largest:
+            largest = num
+
+    except ValueError:
+        print("Invalid input.")
+
+if largest != float('-inf'):
+    print(largest)
+else:
+    print("No valid numbers were entered.")
