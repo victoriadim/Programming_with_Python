@@ -1,0 +1,9 @@
+def ascending_order(some_numbers):
+    return sorted(numbers_as_digits)
+
+numbers_as_string = input().split()
+numbers_as_digits = []
+for number in numbers_as_string:
+    numbers_as_digits.append(int(number))
+
+print(ascending_order(numbers_as_digits))
