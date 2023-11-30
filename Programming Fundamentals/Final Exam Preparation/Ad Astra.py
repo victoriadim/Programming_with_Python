@@ -1,17 +1,13 @@
 import re
 
-user_input = input()
-calories = 0
-result = []
-pattern = re.compile(r"([#|])(?P<item>[A-Za-z\s]+)\1(?P<expiration_date>[0-9]{2}/[0-9]{2}/[0-9]{2})\1(?P<calories>[0-9]+)\1")
-
-matches = re.finditer(pattern, user_input)
-for match in matches:
-    current_cal = int(match["calories"])
-    calories += current_cal
-    result.append({"name": match["item"], "date": match["expiration_date"], "nutrition": match["calories"]})
-number_day = calories // 2000
-print(f"You have food to last you for: {number_day} days!")
-if number_day > 0:
-    for match in result:
-        print(f'Item: {match["name"]}, Best before: {match["date"]}, Nutrition: {match["nutrition"]}')
+info = input()
+pattern = r"(?i)([#|])([a-z\s]+)(\1)(\d{2}\/\d{2}\/\d{2})(\1)(\d+)(\1)"
+matches = re.findall(pattern, info)
+total_calories = sum([int(match[5]) for match in matches])
+days = total_calories // 2000
+print(f"You have food to last you for: {days} days!")
+for element in matches:
+    item_name = element[1]
+    expiration_date = element[3]
+    calories = element[5]
+    print(f"Item: {item_name}, Best before: {expiration_date}, Nutrition: {calories}")
