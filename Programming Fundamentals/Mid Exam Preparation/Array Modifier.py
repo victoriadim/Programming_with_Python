@@ -1,24 +1,3 @@
-# values = [int(v) for v in input().split()]
-# delimiter = "\n"
-# end = "end"
-# inn = input()
-# commands = inn.split(delimiter)
-#
-# for command in commands:
-#     if command == "end":
-#         break
-#     pos1 = int(command.split()[1])
-#     pos2 = int(command.split()[2])
-#     if command.split()[0] == "swap":
-#         values[pos1], values[pos2] = values[pos2], values[pos1]
-#     elif command.split()[0] == "multiply":
-#         print("case_2")
-#     elif command.split()[0] == "decrease":
-#         print("case_2")
-#
-# print(values)
-
-
 values = [int(v) for v in input().split()]
 delimiter = " "
 end = "end"
