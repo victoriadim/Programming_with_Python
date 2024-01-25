@@ -5,7 +5,7 @@ r = requests.get('https://en.wikipedia.org/wiki/List_of_European_Union_member_st
 soup = bs(r.content, features="lxml")
 
 data = {}
-table = soup.find('table', attrs={'class':'sortable wikitable sticky-header col2left col7left'})
+table = soup.find('table', attrs={'class': 'sortable wikitable sticky-header col2left col7left'})
 table_body = table.find('tbody')
 rows = table_body.find_all('tr')
 for row in rows[2:5]:
