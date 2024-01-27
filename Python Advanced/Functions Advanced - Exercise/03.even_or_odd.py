@@ -1,0 +1,7 @@
+def even_odd(*args):
+    command = args[-1]
+
+    if command == "even":
+        return [num for num in args[:-1] if num % 2 == 0]
+    else:
+        return [num for num in args[:-1] if num % 2 != 0]
