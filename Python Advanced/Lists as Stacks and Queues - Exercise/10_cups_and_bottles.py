@@ -16,6 +16,6 @@ while cups and bottles:
 if cups:
     print(f"Cups:", *cups)
 else:
-    print(f"Bottles:", * bottles)
+    print(f"Bottles:", *bottles)
 
 print(f"Wasted litters of water: {wasted_liters}")
