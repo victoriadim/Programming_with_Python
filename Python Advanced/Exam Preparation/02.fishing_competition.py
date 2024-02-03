@@ -13,6 +13,7 @@ directions = {
 
 for row in range(size):
     matrix.append(input().split())
+    matrix_strings = [str(x) for x in row]
 
     if 'S' in matrix[row]:
         my_pos = [row, matrix[row].index('S')]
@@ -55,5 +56,5 @@ else:
 if fish_amount > 0:
     print(f"Amount of fish caught: {fish_amount} tons.")
 
-if not 'W' in matrix:
+if 'W' not in matrix:
     print(matrix)
