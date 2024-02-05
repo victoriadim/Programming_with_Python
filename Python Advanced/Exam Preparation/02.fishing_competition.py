@@ -1,8 +1,29 @@
-size = int(input())
+def out_of_bounds(row:int, col:int, matrix_size: int):
+    if row < 0:
+        return matrix_size - 1, col
+    elif row >= matrix_size:
+        return 0, col
+    elif col < 0:
+        return row, matrix_size - 1
+    elif col >= matrix_size:
+        return row, 0
 
+    return row, col
+
+
+size = int(input())
 matrix = []
-my_pos = []
+my_row, my_col = 0, 0
 fish_amount = 0
+whirlpool = False
+
+for current_row in range(size):
+    matrix_row = [int(el) if el.isdigit() else el for el in input()]
+    if 'S' in matrix_row:
+        my_row, my_col = current_row, matrix_row.index('S')
+    matrix.append(matrix_row)
+
+matrix[my_row][my_col] = '-'
 
 directions = {
     "up": (-1, 0),
@@ -11,50 +32,35 @@ directions = {
     "right": (0, 1),
 }
 
-for row in range(size):
-    matrix.append(input().split())
-    matrix_strings = [str(x) for x in row]
+command = input()
+while command != "collect the nets":
+    cur_row, cur_col = directions[command]
 
-    if 'S' in matrix[row]:
-        my_pos = [row, matrix[row].index('S')]
-        matrix[row][my_pos[1]] = "*"
+    my_row, my_col = out_of_bounds(cur_row + my_row, cur_col + my_col, size)
+    if isinstance(matrix[my_row][my_col], int):
+        fish_amount += matrix[my_row][my_col]
+    elif matrix[my_row][my_col] == 'W':
+        fish_amount = 0
+        whirlpool = True
 
-direction = input()
-while direction != "collect the nets":
+    matrix[my_row][my_col] = '-'
 
-    row = my_pos[0] + directions[direction][0]
-    col = my_pos[1] + directions[direction][1]
-
-    if not (0 <= row < size and 0 <= col < size):
-        if direction == "right":
-            my_pos = [row, 0]
-        elif direction == "left":
-            my_pos = [row, size - 1]
-        elif direction == "up":
-            my_pos = [0, col]
-        elif direction == "down":
-            my_pos = [size - 1, col]
-
-    my_pos = [row, col]
-    element = matrix[row][col]
-    matrix[row][col] = "*"
-
-    if element == "W":
-        print(
-            f"You fell into a whirlpool! The ship sank and you lost the fish you caught. Last coordinates of the ship: {my_pos}")
+    if whirlpool:
         break
 
-    if element.isdigit():
-        fish_amount += int(element)
-        matrix[row][col] = "-"
+    command = input()
 
-if fish_amount >= 20:
+matrix[my_row][my_col] = 'S'
+
+if whirlpool:
+    print(f"You fell into a whirlpool! The ship sank and you lost the fish you caught. Last coordinates of the ship: [{my_row},{my_col}]")
+elif fish_amount >= 20:
     print("Success! You managed to reach the quota!")
-else:
-    print(f"You didn't catch enough fish and didn't reach the quota!\nYou need {20 - fish_amount} tons of fish more.")
+elif fish_amount < 20:
+    print(f"You didn't catch enough fish and didn't reach the quota! You need {20 - fish_amount} tons of fish more.")
 
-if fish_amount > 0:
+if fish_amount:
     print(f"Amount of fish caught: {fish_amount} tons.")
 
-if 'W' not in matrix:
-    print(matrix)
+if not whirlpool:
+    [print(*row, sep="") for row in matrix]

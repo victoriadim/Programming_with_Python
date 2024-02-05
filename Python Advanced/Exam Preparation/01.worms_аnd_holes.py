@@ -15,12 +15,7 @@ while worms and holes:
     elif current_worm == current_hole:
         matches += 1
 
-    elif current_worm < current_hole:
-        current_worm -= 3
-        if current_worm > 0:
-            worms.append(current_worm)
-
-    elif current_worm > current_hole:
+    elif current_worm < current_hole or current_worm > current_hole:
         current_worm -= 3
         if current_worm > 0:
             worms.append(current_worm)
