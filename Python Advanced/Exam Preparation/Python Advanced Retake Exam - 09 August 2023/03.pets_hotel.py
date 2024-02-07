@@ -21,12 +21,3 @@ def accommodate_new_pets(capacity, maximum_weight, *info):
         result += f"{pet}: {count}\n"
 
     return result
-
-print(accommodate_new_pets(
-    10,
-    10.0,
-    ("cat", 5.8),
-    ("dog", 10.5),
-    ("parrot", 0.8),
-    ("cat", 3.1),
-))
