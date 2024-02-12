@@ -15,3 +15,10 @@ def movie_organizer(*info):
             result += f"* {name_movie}\n"
 
     return result
+
+# print(movie_organizer(
+#     ("The Godfather", "Drama"),
+#     ("The Hangover", "Comedy"),
+#     ("The Shawshank Redemption", "Drama"),
+#     ("The Pursuit of Happiness", "Drama"),
+#     ("The Hangover Part II", "Comedy")))
