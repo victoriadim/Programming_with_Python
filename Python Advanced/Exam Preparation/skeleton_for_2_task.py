@@ -57,3 +57,6 @@ while True:
 
 # for row in matrix:
 #     print(f"{''.join(row)}")  # if there is a need for printing the whole matrix with no separation
+
+# for row in matrix:
+#     print(*row, sep="")  it is the same
