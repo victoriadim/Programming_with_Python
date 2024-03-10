@@ -46,5 +46,8 @@ class Storage:
         document = next(filter(lambda d: d.id == document_id, self.documents))
         self.documents.remove(document)
 
+    def get_document(self, document_id: int):
+        return next(filter(lambda d: d.id == document_id, self.documents))
+
     def __repr__(self):
         return "\n".join(str(d) for d in self.documents)
