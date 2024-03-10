@@ -17,7 +17,7 @@ class PhotoAlbum:
 
     def add_photo(self, label: str) -> str:
         for page in range(self.pages):
-            if len(self.photos[page]) < 4:
+            if len(self.photos[page]) < self.PHOTOS_PER_PAGE:
                 slot = len(self.photos[page]) + 1
                 self.photos[page].append(label)
 
