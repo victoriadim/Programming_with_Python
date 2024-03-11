@@ -1,4 +1,7 @@
-class Customer:
+from project.next_id_mixin import NextIdMixin
+
+
+class Customer(NextIdMixin):
     id = 1
 
     def __init__(self, name: str, address: str, email: str):
@@ -6,14 +9,7 @@ class Customer:
         self.address = address
         self.email = email
         self.id = self.get_next_id()
-
-    @classmethod
-    def get_next_id(cls):
-        return cls.id
-
-    @classmethod
-    def increment_id(cls):
-        cls.id += 1
+        self.increment_id()
 
     def __repr__(self):
         return f"Customer <{self.id}> {self.name}; Address: {self.address}; Email: {self.email}"
